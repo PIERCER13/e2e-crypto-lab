@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="piercer" />
+  <title>Piercer E2E Crypto Lab (AES-GCM / HMAC / RSA)</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Piercer E2E Crypto Lab</h1>
+      <p class="subtitle">Laboratório visual de criptografia moderna (AES-256-GCM, PBKDF2, HMAC-SHA256 e chaves RSA-OAEP)</p>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Cifragem Simétrica (AES-256-GCM)</h2>
+      <div class="field"><label>Mensagem / Payload</label><textarea id="plainMsg" rows="4">{"user":"piercer","role":"admin"}</textarea></div>
+      <div class="field"><label>Chave / Senha</label><input type="text" id="aesPass" value="segredo_forte_2026" /></div>
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="btnEncrypt">Cifrar (AES-GCM)</button>
+        <button type="button" class="btn" id="btnDecrypt">Decifrar Payload</button>
+      </div>
+      <div class="field" style="margin-top:10px;"><label>Payload Cifrado (JSON: Salt + IV + Ciphertext Base64)</label><textarea id="cipherJson" rows="5"></textarea></div>
+    </section>
+
+    <section class="card">
+      <h2>Assinatura HMAC-SHA256 &amp; Chaves Assimétricas (RSA-OAEP)</h2>
+      <div class="field"><label>HMAC-SHA256 do Payload</label><input type="text" id="hmacOut" readonly /></div>
+      <button type="button" class="btn" id="btnHmac" style="margin-bottom:14px;">Calcular HMAC-SHA256</button>
+
+      <hr class="sep" />
+      <button type="button" class="btn btn-primary" id="btnGenRsa">Gerar Par de Chaves RSA-2048 (JWK)</button>
+      <div class="field" style="margin-top:10px;"><label>Public Key (JWK)</label><textarea id="rsaPub" rows="4" readonly></textarea></div>
+      <div class="field"><label>Private Key (JWK)</label><textarea id="rsaPriv" rows="4" readonly></textarea></div>
+    </section>
+  </main>
+  <script src="./piercer_i18n.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
